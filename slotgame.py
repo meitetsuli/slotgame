@@ -35,9 +35,9 @@ class SlotGame:
                          1: 0.16, 
                          2: 0.08, 
                          3: 0.2,  
-                         4: 0.08, 
-                         5: 0.12, 
-                         6: 0.12} 
+                         4: 0.12, 
+                         5: 0.10, 
+                         6: 0.10} 
         return random.choices(list(probabilities.keys()), weights=list(probabilities.values()), k=1)[0]
 
     def update(self):
