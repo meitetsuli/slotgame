@@ -31,13 +31,13 @@ class SlotGame:
     
     def get_item(self):
         # スロットの各項目を確率に基づいて選ぶ
-        probabilities = {1: 0.24,  
-                         2: 0.16, 
-                         3: 0.08, 
-                         4: 0.2,  
-                         5: 0.08, 
-                         6: 0.12, 
-                         7: 0.12} 
+        probabilities = {0: 0.24,  
+                         1: 0.16, 
+                         2: 0.08, 
+                         3: 0.2,  
+                         4: 0.08, 
+                         5: 0.12, 
+                         6: 0.12} 
         return random.choices(list(probabilities.keys()), weights=list(probabilities.values()), k=1)[0]
 
     def update(self):
@@ -127,31 +127,31 @@ class SlotGame:
     def calculate_reward(self, item):
         # 各項目に対する報酬の定義
         rewards = {
-            1: 3 * self.bet, # bet額の3倍
-            2: 6 * self.bet, # bet額の6倍
-            3: 12 * self.bet, # bet額の12倍
+            0: 3 * self.bet, # bet額の3倍
+            1: 6 * self.bet, # bet額の6倍
+            2: 12 * self.bet, # bet額の12倍
+            3: 0,  # アイテム3の特別処理
             4: 0,  # アイテム4の特別処理
             5: 0,  # アイテム5の特別処理
-            6: 0,  # アイテム6の特別処理
-            7: 0   # アイテム7の特別処理
+            6: 0   # アイテム6の特別処理
         }
         # 特別処理
-        if item in [1, 4]:
+        if item in [0, 3]:
             pyxel.play(0, 2)  # サウンド再生
-        elif item in [2, 6]:
+        elif item in [1, 5]:
             pyxel.play(0, 5)  # 別のサウンド再生
-        elif item in [3, 5]:
+        elif item in [2, 4]:
             pyxel.play(0, 6)  # 別のサウンドを再生
 
         # アイテムごとの特別な効果
-        if item == 4:
+        if item == 3:
             self.free_spins += 1  # アイテム4が出た場合、フリースピンを1回追加
-        elif item == 5:
+        elif item == 4:
             self.free_spins += 5  # アイテム5が出た場合、フリースピンを5回追加
+        elif item == 5:
+            self.game_over = True  # アイテム5が出た場合、ゲームオーバー
         elif item == 6:
-            self.spin_speed_factor = 0.5  # アイテム6が出た場合、スピン速度を半分にする
-        elif item == 7:
-            self.game_over = True  # アイテム7が出た場合、ゲームオーバー
+            self.spin_speed_factor = 0.1  # アイテム6が出た場合、スピン速度を半分にする
     
         return rewards[item]  # 定義した報酬を返す
 
