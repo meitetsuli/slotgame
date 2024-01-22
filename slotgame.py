@@ -36,8 +36,8 @@ class SlotGame:
                          2: 0.1, 
                          3: 0.15,  
                          4: 0.10, 
-                         5: 0.15, 
-                         6: 0.05} 
+                         5: 0.05, 
+                         6: 0.15} 
         return random.choices(list(probabilities.keys()), weights=list(probabilities.values()), k=1)[0]
 
     def update(self):
@@ -130,10 +130,10 @@ class SlotGame:
             0: 3 * self.bet, # bet額の3倍
             1: 6 * self.bet, # bet額の6倍
             2: 12 * self.bet, # bet額の12倍
-            3: 0,  # アイテム3の特別処理
-            4: 0,  # アイテム4の特別処理
-            5: 0,  # アイテム5の特別処理
-            6: 0   # アイテム6の特別処理
+            3: 1,  # アイテム3の特別処理
+            4: 1,  # アイテム4の特別処理
+            5: 1,  # アイテム5の特別処理
+            6: 1   # アイテム6の特別処理
         }
         # 特別処理
         if item in [0, 3]:
