@@ -31,13 +31,13 @@ class SlotGame:
     
     def get_item(self):
         # スロットの各項目を確率に基づいて選ぶ
-        probabilities = {0: 0.24,  
-                         1: 0.16, 
-                         2: 0.08, 
-                         3: 0.2,  
-                         4: 0.12, 
-                         5: 0.10, 
-                         6: 0.10} 
+        probabilities = {0: 0.30,  
+                         1: 0.15, 
+                         2: 0.1, 
+                         3: 0.15,  
+                         4: 0.10, 
+                         5: 0.15, 
+                         6: 0.05} 
         return random.choices(list(probabilities.keys()), weights=list(probabilities.values()), k=1)[0]
 
     def update(self):
