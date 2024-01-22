@@ -151,7 +151,7 @@ class SlotGame:
         elif item == 5:
             self.game_over = True  # アイテム5が出た場合、ゲームオーバー
         elif item == 6:
-            self.spin_speed_factor = 0.1  # アイテム6が出た場合、スピン速度を半分にする
+            self.spin_speed_factor = 0.01  # アイテム6が出た場合、スピン速度を半分にする
     
         return rewards[item]  # 定義した報酬を返す
 
