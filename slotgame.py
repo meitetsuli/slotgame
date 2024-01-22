@@ -49,7 +49,7 @@ class SlotGame:
 
         # ベット額の更新
         if pyxel.btnp(pyxel.KEY_UP) or self.is_mouse_on_button('bet_increase') and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
-            self.bet = min(self.bet + 100, self.balance)
+            self.bet = min(self.bet + 100, 5000)
         if pyxel.btnp(pyxel.KEY_DOWN) or self.is_mouse_on_button('bet_decrease') and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
             self.bet = max(self.bet - 100, 200)
 
